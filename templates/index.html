@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1>Citas</h1>
+    <a href="/agendar" class="btn btn-primary">Nueva cita</a>
+
+    <div class="row">
+        {% for c in citas %}
+        <div class="col-md-4">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5>{{ c[1] }}</h5>
+                    <p>{{ c[2] }}</p>
+                    <p>{{ c[3] }}</p>
+                    <p>{{ c[4] }}</p>
+
+                    <a href="/editar/{{ c[0] }}" class="btn btn-warning">Editar</a>
+                    <a href="/eliminar/{{ c[0] }}" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>
