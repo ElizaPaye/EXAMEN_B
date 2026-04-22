@@ -1,32 +1,100 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>LOS AMIGOS</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .card {
+        border-radius: 15px;
+    }
+    </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Citas</h1>
-    <a href="/agendar" class="btn btn-primary">Nueva cita</a>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container">
+    <a class="navbar-brand">🐾 LOS AMIGOS</a>
+  </div>
+</nav>
 
+<!-- BANNER -->
+<div class="container mt-4">
+  <div class="p-5 rounded" style="background-color:#20c997;">
+    
     <div class="row">
-        {% for c in citas %}
-        <div class="col-md-4">
-            <div class="card mt-3">
-                <div class="card-body">
-                    <h5>{{ c[1] }}</h5>
-                    <p>{{ c[2] }}</p>
-                    <p>{{ c[3] }}</p>
-                    <p>{{ c[4] }}</p>
+        <div class="col-md-6">
 
-                    <a href="/editar/{{ c[0] }}" class="btn btn-warning">Editar</a>
-                    <a href="/eliminar/{{ c[0] }}" class="btn btn-danger">Eliminar</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+    <h1 style="
+        font-size: 60px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #14532d; /* verde fuerte elegante */
+    ">
+        Veterinaria
+    </h1>
+
+    <h2 style="
+        font-size: 35px;
+        font-style: italic;
+        color: #166534;
+    ">
+        Los Amigos
+    </h2>
+
+    <p style="
+        font-size: 18px;
+        color: #1f2937;
+    ">
+        Cuidado con corazón para tus peludos
+    </p>
+
+    <a href="/agendar" class="btn btn-light btn-lg mt-3">
+        Agendar Cita
+    </a>
+
+</div>
+
+      <div class="col-md-6 text-center">
+        <img src="{{ url_for('static', filename='img/imagen1.png') }}" 
+             class="img-fluid" 
+             style="max-height: 250px;">
+      </div>
     </div>
 
+  </div>
+</div>
+
+<!-- 🧾 CITAS -->
+<div class="container mt-5">
+  <h2>Citas Programadas</h2>
+
+  <div class="row">
+    {% for c in citas %}
+    <div class="col-md-4">
+      <div class="card shadow-lg mt-3">
+
+        <div class="card-body">
+          <h5 class="card-title">🐾 {{ c[1] }}</h5>
+          <p><strong>Propietario:</strong> {{ c[2] }}</p>
+          <p><strong>Especie:</strong> {{ c[3] }}</p>
+          <p><strong>Fecha:</strong> {{ c[4] }}</p>
+
+          <a href="/editar/{{ c[0] }}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="/eliminar/{{ c[0] }}" class="btn btn-danger btn-sm">Eliminar</a>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
 </body>

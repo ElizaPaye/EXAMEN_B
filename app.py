@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+import webbrowser
 import sqlite3
 
 app = Flask(__name__)
@@ -78,5 +79,6 @@ def eliminar(id):
     return redirect("/")
 
 if __name__ == "__main__":
+    webbrowser.open("http://127.0.0.1:5000/")
     app.run(debug=True)
     
